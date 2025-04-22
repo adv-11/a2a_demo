@@ -14,7 +14,7 @@ os.environ['REQUESTS_CA_BUNDLE'] = ''  # Empty string disables verification
 #Step 1: Activities agent  
 activities_agent = Agent(
     name="activities_agent",
-    model=LiteLlm("gemini/gemini-pro"),
+    model=LiteLlm("gemini/gemini-2.0-flash"),
     description="Suggests interesting activities for the user at a destination.",
     instruction=(
         "Given a destination, dates, and budget, suggest 2-3 engaging tourist or cultural activities. "

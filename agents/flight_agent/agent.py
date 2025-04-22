@@ -16,7 +16,7 @@ os.environ['REQUESTS_CA_BUNDLE'] = ''  # Empty string disables verification
 #Step 1: Flight agent  
 flight_agent = Agent(
     name="flight_agent",
-    model=LiteLlm("gemini/gemini-pro"),
+    model=LiteLlm("gemini/gemini-2.0-flash"),
     description="Suggests flight options for users traveling to a destination.",
     instruction=(
         "Given an origin, destination, and dates, suggest 2-3 flight options. "

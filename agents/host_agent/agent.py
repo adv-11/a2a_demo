@@ -18,7 +18,7 @@ os.environ['REQUESTS_CA_BUNDLE'] = ''  # Empty string disables verification
 #Step 1: Host agent  
 host_agent = Agent(
     name="host_agent",
-    model=LiteLlm("gemini/gemini-pro"),
+    model=LiteLlm("gemini/gemini-2.0-flash"),
     description="Coordinates travel planning by calling flight, stay, and activity agents.",
     instruction="You are the host agent responsible for orchestrating trip planning tasks. "
                 "You call external agents to gather flights, stays, and activities, then return a final result."
