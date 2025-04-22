@@ -1,0 +1,18 @@
+agents/
+├── host_agent/
+│   │   ├── agent.py              # Optional if host logic is minimal
+│   │   ├── task_manager.py       # Calls other agents and aggregates responses
+│   │   ├── __main__.py           # Starts FastAPI app via common/a2a_server.py
+│   │   └── .well-known/
+│   │       └── agent.json        # A2A Agent Card metadata
+├── flight_agent/
+├── stay_agent/
+└── activities_agent/
+
+
+host_agent: Orchestrates all other agents
+flight_agent: Finds suitable flights
+stay_agent: Suggests accommodations
+activities_agent: Recommends engaging in local activities
+
+
