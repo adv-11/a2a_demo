@@ -31,4 +31,5 @@ if st.button("Plan My Trip ✨"):
             st.subheader("🗺️ Activities")
             st.markdown(data["activities"])
         else:
+            st.write(response.text)
             st.error("Failed to fetch travel plan. Please try again.")

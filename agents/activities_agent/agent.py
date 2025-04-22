@@ -4,7 +4,11 @@ from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
 from google.genai import types
 import json
+import os 
+from dotenv import load_dotenv
+load_dotenv()
 
+os.environ['OPENAI_API_KEY'] = os.getenv('OPENAI_API_KEY')
 #Step 1: Activities agent  
 activities_agent = Agent(
     name="activities_agent",

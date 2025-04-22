@@ -5,6 +5,14 @@ from google.adk.sessions import InMemorySessionService
 from google.genai import types
 import json
 
+
+import os 
+from dotenv import load_dotenv
+load_dotenv()
+
+os.environ['OPENAI_API_KEY'] = os.getenv('OPENAI_API_KEY')
+
+
 #Step 1: Host agent  
 host_agent = Agent(
     name="host_agent",
