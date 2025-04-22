@@ -1,0 +1,59 @@
+
+A2A Protocol Implementation
+
+1. Standard Endpoints
+Each agent exposes a standard /run HTTP endpoint, making them interoperable.
+ This is created through common/a2a_server.py
+
+2. Agent Metadata
+Each agent provides metadata in a .well-known/agent.json file, 
+which follows the A2A standard for agent discovery and describes what the agent does. 
+
+3. Agent Communication
+The common/a2a_client.py implements the client side of the A2A protocol, allowing agents to call other agents:
+
+
+How It All Works
+1. User Input
+The process starts with the user entering travel details in the Streamlit app (streamlit_app.py):
+
+Origin
+Destination
+Start/End dates
+Budget
+
+2. Request Flow
+
+The Streamlit app sends the travel request to the host agent at http://localhost:8000/run
+The host agent then coordinates by calling the other agents.
+
+Each specialized agent (flight, stay, activities) processes the request and returns results
+
+3. Agent Processing
+Each agent follows a similar pattern:
+
+Creates a session
+Constructs a prompt for the LLM (using Google's Gemini)
+Processes the LLM response
+Returns structured JSON data
+
+4. Result Aggregation
+The host agent aggregates results from all agents and returns a complete travel plan:
+
+5. User Display
+Finally, the Streamlit app displays the complete travel plan to the user, organized by category:
+
+Flights
+Accommodations
+Activities
+
+Key Benefits of A2A in This System
+
+Standardization: All agents follow the same interface, making them easily interchangeable
+Decoupling: Each agent can evolve independently as long as it maintains the A2A protocol
+Discoverability: The .well-known/agent.json files make it easy to discover what each agent does
+Extensibility: New agents could be added without changing the core architecture
+Interoperability: These agents could potentially work with other systems that implement A2A
+
+The A2A protocol effectively enables a "plug and play" approach to building AI agent systems, 
+where specialized agents can be composed into more complex workflows.
