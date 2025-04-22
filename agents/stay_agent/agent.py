@@ -10,13 +10,13 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-os.environ['OPENAI_API_KEY'] = os.getenv('OPENAI_API_KEY')
-
+os.environ['GEMINI_API_KEY'] = os.getenv('GEMINI_API_KEY')
+os.environ['REQUESTS_CA_BUNDLE'] = ''  # Empty string disables verification
 
 #Step 1: Stay agent  
 stay_agent = Agent(
     name="stay_agent",
-    model=LiteLlm("openai/gpt-4o"),
+    model=LiteLlm("gemini/gemini-pro"),
     description="Suggests accommodation options for users at a destination.",
     instruction=(
         "Given a destination, dates, and budget, suggest 2-3 accommodation options. "

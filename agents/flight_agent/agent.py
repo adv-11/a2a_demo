@@ -9,12 +9,14 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-os.environ['OPENAI_API_KEY'] = os.getenv('OPENAI_API_KEY')
+os.environ['GEMINI_API_KEY'] = os.getenv('GEMINI_API_KEY')
+
+os.environ['REQUESTS_CA_BUNDLE'] = ''  # Empty string disables verification
 
 #Step 1: Flight agent  
 flight_agent = Agent(
     name="flight_agent",
-    model=LiteLlm("openai/gpt-4o"),
+    model=LiteLlm("gemini/gemini-pro"),
     description="Suggests flight options for users traveling to a destination.",
     instruction=(
         "Given an origin, destination, and dates, suggest 2-3 flight options. "
