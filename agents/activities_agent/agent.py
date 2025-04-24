@@ -5,8 +5,20 @@ from google.adk.sessions import InMemorySessionService
 from google.genai import types
 import json
 import os 
+from mcp.server.fastmcp import FastMCP
+import httpx
+from typing import Any
+
 from dotenv import load_dotenv
 load_dotenv()
+
+
+# mcp = FastMCP("weather")
+
+# # Constants for Weather API
+# NWS_API_BASE = "https://api.weather.gov"
+# USER_AGENT = "weather-app/1.0"
+
 
 os.environ['GEMINI_API_KEY'] = os.getenv('GEMINI_API_KEY')
 os.environ['REQUESTS_CA_BUNDLE'] = ''  # Empty string disables verification
