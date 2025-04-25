@@ -4,6 +4,7 @@ from common.a2a_client import call_agent
 FLIGHT_URL = "http://localhost:8001/run"
 STAY_URL = "http://localhost:8002/run"
 ACTIVITIES_URL = "http://localhost:8003/run"
+NEWS_URL = "http://localhost:8004/run"
 
 
 async def run(payload):
@@ -12,6 +13,7 @@ async def run(payload):
     flights = await call_agent(FLIGHT_URL, payload)
     stay = await call_agent(STAY_URL, payload)
     activities = await call_agent(ACTIVITIES_URL, payload)
+    news = await call_agent(NEWS_URL, payload)
     # Log outputs
     print("flights:", flights)
     print("stay:", stay)
@@ -20,8 +22,10 @@ async def run(payload):
     flights = flights if isinstance(flights, dict) else {}
     stay = stay if isinstance(stay, dict) else {}
     activities = activities if isinstance(activities, dict) else {}
+    news = news if isinstance(news, dict) else {}
     return {
         "flights": flights.get("flights", "No flights returned."),
         "stay": stay.get("stays", "No stay options returned."),
-        "activities": activities.get("activities", "No activities found.")
+        "activities": activities.get("activities", "No activities found."),
+        "news": news.get("news", "No news found.")
     }

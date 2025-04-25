@@ -19,9 +19,9 @@ os.environ['REQUESTS_CA_BUNDLE'] = ''  # Empty string disables verification
 host_agent = Agent(
     name="host_agent",
     model=LiteLlm("gemini/gemini-2.0-flash"),
-    description="Coordinates travel planning by calling flight, stay, and activity agents.",
+    description="Coordinates travel planning by calling flight, stay, news, and activity agents.",
     instruction="You are the host agent responsible for orchestrating trip planning tasks. "
-                "You call external agents to gather flights, stays, and activities, then return a final result."
+                "You call external agents to gather flights, stays, news, and activities, then return a final result."
 )
 
 #Step 2: Session management
@@ -48,7 +48,7 @@ async def execute(request):
     )
     prompt = (
         f"Plan a trip to {request['destination']} from {request['start_date']} to {request['end_date']} "
-        f"within a total budget of {request['budget']}. Call the flights, stays, and activities agents for results."
+        f"within a total budget of {request['budget']}. Call the flights, stays, news, and activities agents for results."
     )
     message = types.Content(role="user", parts=[types.Part(text=prompt)])
     async for event in runner.run_async(user_id=USER_ID, session_id=SESSION_ID, new_message=message):
