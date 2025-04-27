@@ -12,7 +12,6 @@ which follows the A2A standard for agent discovery and describes what the agent 
 3. Agent Communication
 The common/a2a_client.py implements the client side of the A2A protocol, allowing agents to call other agents:
 
-
 How It All Works
 1. User Input
 The process starts with the user entering travel details in the Streamlit app (streamlit_app.py):
